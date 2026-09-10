@@ -16,6 +16,7 @@ class BookingConfig:
     train_number: str
     coach_type: str
     auto_upgradation: bool
+    tatkal_confirm_birth_only: bool
 
 
 @dataclass(frozen=True)
@@ -62,6 +63,7 @@ def load_config(config_dir="config") -> AppConfig:
             train_number=config.get("train_number", ""),
             coach_type=config.get("coach_type", ""),
             auto_upgradation=config.get("auto_upgradation", False),
+            tatkal_confirm_birth_only=config.get("tatkal_confirm_birth_only", False),
         ),
         payment=PaymentConfig(
             mode=config.get("payment_mode", 1),
