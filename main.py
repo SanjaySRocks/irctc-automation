@@ -1,19 +1,15 @@
 from patchright.sync_api import sync_playwright
-from datetime import datetime
 
 from utils.config_loader import load_config
 from utils.validators import validate_journey
 
-from pages.base_page import IRCTCPage
+from pages.base_page import IRCTC_URL
 from pages.journey_page import JourneyPage
 from pages.login_page import LoginPage
 from pages.train_page import TrainPage
 from pages.passenger_page import PassengerPage
 from pages.review_page import ReviewPage
 from pages.payment_page import PaymentPage
-
-
-IRCTC_URL = "https://www.irctc.co.in/nget/train-search"
 
 
 def run():
@@ -59,30 +55,32 @@ def run():
 
         try:
             JourneyPage(page).fill_and_search(config.journey)
-        
+            page.wait_for_timeout(1000)
             LoginPage(page).login(
                 config.credentials.username,
                 config.credentials.password,
             )
-        
+            page.wait_for_timeout(1000)
+
             booked = TrainPage(page).select_train_and_book(
                 config.booking
             )
             if not booked:
                 return
 
-        
+            page.wait_for_timeout(1000)
             PassengerPage(page).fill_passengers(
                 config.passengers,
                 auto_upgradation=config.booking.auto_upgradation,
                 payment_mode=config.payment.mode,
             )
-        
+            page.wait_for_timeout(1000)
             reviewed = ReviewPage(page).review_and_continue()
             if not reviewed:
                 return
 
-                    PaymentPage(page).pay(config.payment)
+            page.wait_for_timeout(1000)
+            PaymentPage(page).pay(config.payment)
 
         except Exception as error:
             print("\n❌ BOOKING FLOW FAILED")

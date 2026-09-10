@@ -3,6 +3,9 @@ from enum import Enum
 from patchright.sync_api import TimeoutError
 
 
+IRCTC_URL = "https://www.irctc.co.in"
+
+
 class IRCTCPage(Enum):
     JOURNEY_DETAILS = "/nget/train-search"
     TRAIN_LIST = "/nget/booking/train-list"

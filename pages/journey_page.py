@@ -1,6 +1,6 @@
 import re
 from datetime import datetime
-from .base_page import BasePage
+from .base_page import BasePage, IRCTCPage
 
 
 class JourneyPage(BasePage):
@@ -104,4 +104,5 @@ class JourneyPage(BasePage):
         )
         search_button.scroll_into_view_if_needed()
         search_button.click()
+        self.wait_for_page(IRCTCPage.TRAIN_LIST)
         print("Search Trains clicked")
