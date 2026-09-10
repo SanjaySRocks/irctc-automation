@@ -49,3 +49,5 @@ class BasePage:
         )
 
         print(f"Page loaded: {expected_page.name}")
+
+        

@@ -37,7 +37,7 @@ def run():
                 has_text="Alert",
             )
         )
-
+        
         def handle_alert():
             print("IRCTC Alert popup detected")
             alert_dialog.locator("button").filter(
@@ -46,6 +46,55 @@ def run():
             print("English button clicked")
 
         page.add_locator_handler(alert_dialog, handle_alert)
+
+        # --------------------------------------------------
+        # LAST TRANSACTION DETAIL POPUP
+        # --------------------------------------------------
+
+        transaction_popup = page.locator(
+            "#ui-dialog-2-label"
+        )
+
+
+        def handle_transaction_popup():
+            print("IRCTC Last Transaction Detail popup detected")
+
+            page.locator(
+                '[aria-label="Close. Last Transaction Detail popup."]'
+            ).click()
+
+            print("Last Transaction Detail popup closed")
+
+
+        page.add_locator_handler(
+            transaction_popup,
+            handle_transaction_popup
+        )
+
+        # --------------------------------------------------
+        # CONFIRMATION POPUP
+        # --------------------------------------------------
+
+        confirm_popup = page.locator(
+            ".ui-confirmdialog-message"
+        )
+
+        def handle_confirm_popup():
+            print("IRCTC Confirmation popup detected")
+
+            page.get_by_text(
+                "Yes",
+                exact=True
+            ).click()
+
+            print("Yes clicked")
+
+
+        page.add_locator_handler(
+            confirm_popup,
+            handle_confirm_popup
+        )
+
 
         page.goto(
             IRCTC_URL,
