@@ -18,7 +18,6 @@ The tool supports regular and **Tatkal ticket booking** and is designed to make 
 - Auto-upgradation support
 - Payment mode selection
 - Payment vendor selection where supported by the configuration
-- Page-level navigation checkpoints
 - Configurable booking details through JSON files
 
 ## Project Structure
