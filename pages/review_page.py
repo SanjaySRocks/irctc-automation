@@ -45,12 +45,10 @@ class ReviewPage(BasePage):
             final_continue.scroll_into_view_if_needed()
 
             final_continue.click()
-
             self.page.wait_for_url(
                 "**/nget/payment/bkgPaymentOptions**",
                 timeout=15000,
             )
-
             print("Final Continue clicked")
             return True
 

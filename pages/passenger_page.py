@@ -59,9 +59,5 @@ class PassengerPage(BasePage):
         continue_button.scroll_into_view_if_needed()
 
         continue_button.click()
-
-        self.page.wait_for_url(
-            "**/nget/booking/reviewBooking**",
-            timeout=15000,
-        )
+        self.wait_for_page(IRCTCPage.REVIEW_BOOKING)
         print("Continue clicked")

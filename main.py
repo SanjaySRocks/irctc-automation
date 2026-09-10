@@ -4,6 +4,7 @@ from datetime import datetime
 from utils.config_loader import load_config
 from utils.validators import validate_journey
 
+from pages.base_page import IRCTCPage
 from pages.journey_page import JourneyPage
 from pages.login_page import LoginPage
 from pages.train_page import TrainPage
@@ -58,35 +59,30 @@ def run():
 
         try:
             JourneyPage(page).fill_and_search(config.journey)
-            page.wait_for_timeout(1000)
-
+        
             LoginPage(page).login(
                 config.credentials.username,
                 config.credentials.password,
             )
-            page.wait_for_timeout(1000)
-
+        
             booked = TrainPage(page).select_train_and_book(
                 config.booking
             )
             if not booked:
                 return
 
-            page.wait_for_timeout(1000)
-
+        
             PassengerPage(page).fill_passengers(
                 config.passengers,
                 auto_upgradation=config.booking.auto_upgradation,
                 payment_mode=config.payment.mode,
             )
-            page.wait_for_timeout(1000)
-
+        
             reviewed = ReviewPage(page).review_and_continue()
             if not reviewed:
                 return
 
-            page.wait_for_timeout(1000)
-            PaymentPage(page).pay(config.payment)
+                    PaymentPage(page).pay(config.payment)
 
         except Exception as error:
             print("\n❌ BOOKING FLOW FAILED")
