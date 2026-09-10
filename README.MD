@@ -1,6 +1,6 @@
-# IRCTC Playwright Structured Automation
+# IRCTC Automation
 
-Refactored from the supplied single-file Patchright automation into a page-object structure.
+An automation tool to book irctc ticket online 
 
 ## Run
 
@@ -24,12 +24,67 @@ Refactored from the supplied single-file Patchright automation into a page-objec
 - `pages/` - page-object classes
 - `utils/` - configuration loading, validation, and station helper
 
-## Notes
+# Configuration  Help
 
-The existing flow, selectors, retry behavior, availability polling, confirmation handling,
-passenger entry, review validation, and payment selection are retained as closely as
-possible from the supplied script.
+config.json
+```json
+{
+    "from": "NDLS",
+    "to": "FTP",
+    "quota": "GENERAL",
+    "date": "24/10/2026",
+    "train_number": "12418",
+    "coach_type": "SL",
+    "auto_upgradation": true,
+    "payment_mode": 2
+}
+```
 
-The original script imports `extract_station_name` from an existing `utils` module.
-A small compatibility implementation is included in `utils/station_utils.py`; replace it
-with your existing implementation if that helper has more specific parsing behavior.
+| Field              | Description                      | Valid Values / Example       |
+| ------------------ | -------------------------------- | ---------------------------- |
+| `from`             | Source railway station code      | `NDLS`                       |
+| `to`               | Destination railway station code | `FTP`                        |
+| `quota`            | Booking quota                    | `GENERAL`, `TATKAL`          |
+| `date`             | Journey date                     | Format: `DD/MM/YYYY`         |
+| `train_number`     | Train number to select           | Example: `12418`             |
+| `coach_type`       | Coach class code                 | `SL`, `3A`, `2A`, `1A`, `3E` |
+| `auto_upgradation` | Enable auto upgradation          | `true`, `false`              |
+| `payment_mode`     | Payment mode                     | `1 - Debit/Credit Card/UPI`, `2- BHIM/UPI`                     |
+
+# Credentials
+
+credentials.json
+
+```json
+{
+    "username": "ENTER_IRCTC_USERNAME",
+    "password": "ENTER_IRCTC_PASSWORD"
+}
+```
+
+## Passengers Configuration
+
+Passenger details are configured in the `passengers.json` file.
+
+### Example
+
+passengers.json
+```json
+{
+    "passengers": [
+        {
+            "name": "SANJAY SINGH",
+            "age": 25,
+            "gender": "M",
+            "berth": ""
+        }
+    ]
+}
+```
+
+| Field    | Description                              | Valid Values                           |
+| -------- | ---------------------------------------- | -------------------------------------- |
+| `name`   | Passenger full name as per Government ID | Maximum 16 characters                  |
+| `age`    | Passenger age                            | `1` to `125`                           |
+| `gender` | Passenger gender                         | `M`, `F`, `T`                          |
+| `berth`  | Preferred berth                          | `LB`, `MB`, `UB`, `SL`, `SU`, or empty for no preference |
