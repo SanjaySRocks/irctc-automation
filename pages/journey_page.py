@@ -10,10 +10,7 @@ class JourneyPage(BasePage):
         )
         from_station.scroll_into_view_if_needed()
         from_station.fill(journey.from_station)
-
-        self.page.get_by_role("option").filter(
-            has_text=journey.from_station
-        ).first.click()
+        from_station.press("Enter")
 
         journey_from_text = from_station.input_value().strip()
         print("From station selected:", journey_from_text)
@@ -23,10 +20,7 @@ class JourneyPage(BasePage):
         )
         to_station.scroll_into_view_if_needed()
         to_station.fill(journey.to_station)
-
-        self.page.get_by_role("option").filter(
-            has_text=journey.to_station
-        ).first.click()
+        to_station.press("Enter")
 
         journey_to_text = to_station.input_value().strip()
         print("To station selected:", journey_to_text)

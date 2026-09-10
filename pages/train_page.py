@@ -104,25 +104,4 @@ class TrainPage(BasePage):
             print("Seat not available or waitlisted. Booking stopped.")
             return False
 
-        # confirmation_title = self.page.locator(
-        #     "span.ui-dialog-title"
-        # ).filter(
-        #     has_text="Confirmation"
-        # )
-
-        # try:
-        #     confirmation_title.wait_for(
-        #         state="visible",
-        #         timeout=2000,
-        #     )
-        #     print("Confirmation popup detected")
-
-        #     self.page.get_by_text(
-        #         "Yes",
-        #         exact=True,
-        #     ).click()
-        #     print("Yes clicked")
-        # except Exception:
-        #     print("Confirmation popup did not appear")
-
         return True
