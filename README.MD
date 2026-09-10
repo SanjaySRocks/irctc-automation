@@ -127,8 +127,8 @@ config/config.json
 ### Payment Modes
 
 ```text
-1 - Debit/Credit Card / Default
-2 - BHIM/UPI
+1 - Pay through Credit & Debit Cards / Net Banking / Wallets / EMI / UPI_CC / UPI_CL / Rewards and Others
+2 - Pay through BHIM/UPI
 ```
 
 ## Tatkal Booking

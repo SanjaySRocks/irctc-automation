@@ -72,6 +72,7 @@ def run():
             PassengerPage(page).fill_passengers(
                 config.passengers,
                 auto_upgradation=config.booking.auto_upgradation,
+                tatkal_book_only_if_confirm=config.booking.tatkal_book_only_if_confirm,
                 payment_mode=config.payment.mode,
             )
             page.wait_for_timeout(1000)

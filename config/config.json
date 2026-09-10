@@ -3,9 +3,10 @@
     "to": "FTP",
     "quota": "GENERAL",
     "date": "13/10/2026",
-    "train_number": "12428",
+    "train_number": "12418",
     "coach_type": "3A",
     "auto_upgradation": false,
+    "tatkal_book_only_if_confirm": false,
     "payment_mode": 1,
     "payment_vendor": "Paytm UPI"
 }

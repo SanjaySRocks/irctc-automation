@@ -2,7 +2,7 @@ from .base_page import BasePage, IRCTCPage
 
 
 class PassengerPage(BasePage):
-    def fill_passengers(self, passengers, auto_upgradation=False, payment_mode=1):
+    def fill_passengers(self, passengers, auto_upgradation=False, tatkal_book_only_if_confirm=False, payment_mode=1):
         for index, passenger in enumerate(passengers):
             if index > 0:
                 self.page.get_by_text(
@@ -35,6 +35,18 @@ class PassengerPage(BasePage):
             auto_upgrade.scroll_into_view_if_needed()
             auto_upgrade.click()
             print("Auto Upgradation selected")
+
+        if tatkal_book_only_if_confirm:
+            confirm_berths = self.page.locator('[for="confirmberths"]')
+            
+            if confirm_berths.is_visible(timeout=0):
+                confirm_berths.scroll_into_view_if_needed()
+                confirm_berths.click()
+                print("Tatkal: Confirm Berths selected")
+            else:
+                print("Tatkal: Confirm Berths option not available")
+
+        
 
         if payment_mode == 2:
             payment_option = self.page.locator(
