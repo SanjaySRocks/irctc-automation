@@ -122,6 +122,7 @@ config/config.json
 | `train_number` | Train number to select | `12418` |
 | `coach_type` | Preferred coach/class | `SL`, `3A`, `2A`, `1A`, `3E` |
 | `auto_upgradation` | Enable automatic class upgradation | `true`, `false` |
+| `tatkal_confirm_birth_only` | If Enable book only confirm ticket | `true`, `false` |
 | `payment_mode` | Payment mode | `1`, `2` |
 
 ### Payment Modes
