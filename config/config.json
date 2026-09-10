@@ -2,9 +2,10 @@
     "from": "NDLS",
     "to": "FTP",
     "quota": "GENERAL",
-    "date": "09/09/2026",
+    "date": "13/10/2026",
     "train_number": "12418",
     "coach_type": "3A",
-    "auto_upgradation": true,
-    "payment_mode": 1
+    "auto_upgradation": false,
+    "payment_mode": 1,
+    "payment_vendor": "Paytm UPI"
 }

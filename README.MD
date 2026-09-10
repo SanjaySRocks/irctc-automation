@@ -1,65 +1,35 @@
-# Configuration
+# IRCTC Playwright Structured Automation
 
-config.json
-```json
-{
-    "from": "NDLS",
-    "to": "FTP",
-    "quota": "GENERAL",
-    "date": "24/10/2026",
-    "train_number": "12418",
-    "coach_type": "SL",
-    "auto_upgradation": true,
-    "payment_mode": 2
-}
-```
+Refactored from the supplied single-file Patchright automation into a page-object structure.
 
-| Field              | Description                      | Valid Values / Example       |
-| ------------------ | -------------------------------- | ---------------------------- |
-| `from`             | Source railway station code      | `NDLS`                       |
-| `to`               | Destination railway station code | `FTP`                        |
-| `quota`            | Booking quota                    | `GENERAL`, `TATKAL`          |
-| `date`             | Journey date                     | Format: `DD/MM/YYYY`         |
-| `train_number`     | Train number to select           | Example: `12418`             |
-| `coach_type`       | Coach class code                 | `SL`, `3A`, `2A`, `1A`, `3E` |
-| `auto_upgradation` | Enable auto upgradation          | `true`, `false`              |
-| `payment_mode`     | Payment mode                     | `1 - Debit/Credit Card/UPI`, `2- BHIM/UPI`                     |
+## Run
 
-# Credentials
+1. Install dependencies:
+   `pip install -r requirements.txt`
 
-credentials.json
+2. Install/use Patchright's supported browser setup as required by your environment.
 
-```json
-{
-    "username": "ENTER_IRCTC_USERNAME",
-    "password": "ENTER_IRCTC_PASSWORD"
-}
-```
+3. Edit:
+   - `config/config.json`
+   - `config/credentials.json`
+   - `config/passengers.json`
 
-## Passengers Configuration
+4. Run:
+   `python main.py`
 
-Passenger details are configured in the `passengers.json` file.
+## Structure
 
-### Example
+- `main.py` - orchestration only
+- `config/` - runtime configuration and credentials
+- `pages/` - page-object classes
+- `utils/` - configuration loading, validation, and station helper
 
-passengers.json
-```json
-{
-    "passengers": [
-        {
-            "name": "SANJAY SINGH",
-            "age": 25,
-            "gender": "M",
-            "berth": ""
-        }
-    ]
-}
-```
+## Notes
 
-| Field    | Description                              | Valid Values                           |
-| -------- | ---------------------------------------- | -------------------------------------- |
-| `name`   | Passenger full name as per Government ID | Maximum 16 characters                  |
-| `age`    | Passenger age                            | `1` to `125`                           |
-| `gender` | Passenger gender                         | `M`, `F`, `T`                          |
-| `berth`  | Preferred berth                          | `LB`, `MB`, `UB`, `SL`, `SU`, or empty for no preference |
+The existing flow, selectors, retry behavior, availability polling, confirmation handling,
+passenger entry, review validation, and payment selection are retained as closely as
+possible from the supplied script.
 
+The original script imports `extract_station_name` from an existing `utils` module.
+A small compatibility implementation is included in `utils/station_utils.py`; replace it
+with your existing implementation if that helper has more specific parsing behavior.
