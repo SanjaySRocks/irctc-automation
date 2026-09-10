@@ -1,0 +1,10 @@
+{
+    "passengers": [
+        {
+            "name": "SANJAY SINGH",
+            "age": 25,
+            "gender": "M",
+            "berth": ""
+        }
+    ]
+}
