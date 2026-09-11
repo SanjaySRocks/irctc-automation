@@ -28,25 +28,18 @@ class TrainPage(BasePage):
         availability_cards = train.locator("td.link div.pre-avl")
         first_availability = availability_cards.first
 
-        max_retries = 30
         availability_status = None
 
-        for attempt in range(1, max_retries + 1):
-            print(
-                f"Coach selection attempt "
-                f"{attempt}/{max_retries}"
-            )
+        while True:
+            print("Clicking coach to load availability...")
 
             coach.scroll_into_view_if_needed()
             coach.click()
 
-            print(
-                f"Train {booking.train_number} - "
-                f"Coach {booking.coach_type} clicked"
-            )
+            print(f"Coach {booking.coach_type} clicked")
 
             self.wait_for_loader()
-            self.page.wait_for_timeout(1000)
+            self.page.wait_for_timeout(500)
 
             try:
                 if first_availability.count() == 0:
@@ -65,6 +58,7 @@ class TrainPage(BasePage):
                 availability_date = (
                     strong_elements.nth(0).inner_text().strip()
                 )
+
                 availability_status = (
                     strong_elements.nth(1).inner_text().strip()
                 )
@@ -78,11 +72,6 @@ class TrainPage(BasePage):
             except Exception as error:
                 print(f"Status not available yet: {error}")
 
-        if not availability_status:
-            raise Exception(
-                f"Failed to load availability after "
-                f"{max_retries} coach selection attempts"
-            )
 
         self.page.wait_for_timeout(1000)
 
