@@ -1,11 +1,11 @@
 {
     "from": "NDLS",
     "to": "FTP",
-    "quota": "GENERAL",
-    "date": "12/10/2026",
-    "train_number": "12428",
+    "quota": "TATKAL",
+    "date": "12/09/2026",
+    "train_number": "12418",
     "coach_type": "SL",
-    "auto_upgradation": false,
+    "auto_upgradation": true,
     "tatkal_confirm_birth_only": true,
     "payment_mode": 1,
     "payment_vendor": "Paytm UPI"

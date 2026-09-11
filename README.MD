@@ -4,6 +4,9 @@ An automation tool built with Python and Playwright to automate the IRCTC ticket
 
 The tool supports regular and **Tatkal ticket booking** and is designed to make the booking workflow faster by automating repetitive steps such as journey details, train selection, coach selection, passenger details, review, and payment selection.
 
+# Demo Video
+![Project Demo Video](./video/demo.mp4)
+
 ## Features
 
 - Automated IRCTC ticket booking workflow

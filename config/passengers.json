@@ -1,7 +1,7 @@
 {
     "passengers": [
         {
-            "name": "Passenger Name",
+            "name": "Sanjay",
             "age": 30,
             "gender": "M",
             "berth": "LB"
