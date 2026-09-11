@@ -1,0 +1,10 @@
+{
+    "passengers": [
+        {
+            "name": "Passenger Name",
+            "age": 30,
+            "gender": "M",
+            "berth": "LB"
+        }
+    ]
+}
